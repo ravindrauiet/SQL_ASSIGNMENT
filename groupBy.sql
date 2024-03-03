@@ -1,0 +1,134 @@
+ASSIGNMENT QUESTIONS ON GROUP BY
+
+
+1.) WAQTD NUMBER OF EMPLOYEES WORKING IN EACH DEPARTEMENT EXCEPT PRESIDENT.
+
+SQL> SELECT COUNT(*) , DEPTNO FROM EMP 
+  2  WHERE JOB NOT IN 'PRESIDENT'
+  3  GROUP BY DEPTNO;
+
+  COUNT(*)     DEPTNO
+---------- ----------
+         6         30
+         5         20
+         2         10
+
+
+2.) WAQTD TOTAL SALARY NEEDED TO PAY ALL THE EMPLOYEES IN EACH JOB.
+
+SQL> SELECT SUM(SAL) , JOB FROM EMP
+  2  GROUP BY JOB;
+
+  SUM(SAL) JOB
+---------- ---------
+      4150 CLERK
+      5600 SALESMAN
+      5000 PRESIDENT
+      8275 MANAGER
+      6000 ANALYST 
+
+
+3.) WAQTD NUMBER OF EMPLOYEEES WORKING AS MANAGER IN EACH DEPARTMENT.
+
+SQL> SELECT COUNT(*) , DEPTNO FROM EMP
+  2  WHERE JOB IN 'MANAGER'
+  3  GROUP BY DEPTNO;
+
+  COUNT(*)     DEPTNO
+---------- ----------
+         1         30
+         1         20
+         1         10
+
+
+4.) WAQTD AVG SALARY NEEDED TO PAY ALL THE EMPLOYEES IN EACH DEPARTMENT EXCLUDING THE EMPLOYEES OF DEΡΤΝΟ 20.
+
+SQL> SELECT AVG(SAL) , DEPTNO FROM EMP 
+  2  WHERE DEPTNO NOT IN 20
+  3  GROUP BY DEPTNO;
+
+  AVG(SAL)     DEPTNO
+---------- ----------
+1566.66667         30
+2916.66667         10
+
+
+5.) WAQTD NUMBER OF EMPLOYEES HAVING CHARACTER 'A' IN THEIR NAMES IN EACH JOB.
+
+SQL> SELECT COUNT(*),JOB FROM EMP 
+  2  WHERE ENAME LIKE '%A%'
+  3  GROUP BY JOB;
+
+  COUNT(*) JOB
+---------- ---------
+         3 SALESMAN
+         2 CLERK
+         2 MANAGER
+
+
+6.) WAQTD NUMBER OF EMPLOYEES AND AVG SALARY NEEDED TO PAY THE EMPLOYEES WHO SALARY IN GREATER THAN 2000 IN EACH DEPT.
+
+
+SQL>  SELECT COUNT(*) ,AVG(SAL) ,DEPTNO FROM EMP
+  2  WHERE SAL>2000
+  3 GROUP BY DEPTNO
+
+  COUNT(*)   AVG(SAL)     DEPTNO
+---------- ---------- ----------
+         1       2850         30
+         3 2991.66667         20
+         2       3725         10
+
+7.) WAQDTD TOTAL SALARY NEEDED TO PAY AND NUMBER OF SALESMANS IN EACH DEРТ.
+
+SQL> SELECT SUM(SAL + NVL(COMM, 0)) ,DEPTNO FROM EMP
+  2  WHERE JOB IN 'SALESMAN'
+  3  GROUP BY DEPTNO;
+
+SUM(SAL+NVL(COMM,0))     DEPTNO
+-------------------- ----------
+                7800         30
+
+8.) WAQTD NUMBER OF EMPLOYEES WITH THEIR MAXIMUM SALARIES IN EACH JOB.
+
+SQL> SELECT COUNT(*) , MAX(SAL) , JOB FROM EMP
+  2  GROUP BY JOB;
+
+  COUNT(*)   MAX(SAL) JOB
+---------- ---------- ---------
+         4       1300 CLERK
+         4       1600 SALESMAN
+         1       5000 PRESIDENT
+         3       2975 MANAGER
+         2       3000 ANALYST
+
+9.) WAQTD MAXIMUM SALARIES GIVEN TO AN EMPLOYEE WORKING IN EACH DEPT.
+
+SQL> SELECT MAX(SAL) ,DEPTNO FROM EMP
+  2  GROUP BY DEPTNO;
+
+  MAX(SAL)     DEPTNO
+---------- ----------
+      2850         30
+      3000         20
+      5000         10
+
+10.) WAQTD NUMBER OF TIMES THE SALARIES PRESENT IN EMPLOYEE TABLE.
+
+SQL> SELECT COUNT(*) , SAL FROM EMP
+  2  GROUP BY SAL;
+
+  COUNT(*)        SAL
+---------- ----------
+         1       2450
+         1       5000
+         1       1300
+         2       1250
+         1       2850
+         1       2975
+         1       1100
+         2       3000
+         1        800
+         1       1600
+         1       1500
+         1        950
