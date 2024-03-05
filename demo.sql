@@ -18,3 +18,16 @@ SQL> select * from emp;
       7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
 
 
+SQL> SELECT * FROM DEPT;
+
+    DEPTNO DNAME          LOC
+---------- -------------- -------------
+        10 ACCOUNTING     NEW YORK
+        20 RESEARCH       DALLAS
+        30 SALES          CHICAGO
+        40 OPERATIONS     BOSTON
+
+
+
+
+
